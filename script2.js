@@ -6,16 +6,13 @@ var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
     
-    window.alert("To create your secure password, certain criteria must be met. Please answer the following prompts:");
+    window.alert("To create your password, certain criteria must be met. Please answer the following questions:");
     
     
     var pwLength = window.prompt("Your password must be:\nMINIMUM 8 characters long, and\nMAXIMUM 128 characters long\nHow many characters would you like your password to be?");
     var pwUpperCase = window.confirm("We recommend you use a combination of upper and lowercase characters. Would you like to include capitalized letters?");
-    var pwLowerCase = window.confirm("Would you like to include lowercase letters?")
-
-
-    
-    var pwCharType = window.prompt("")
+    var pwLowerCase = window.confirm("Would you like to include lowercase letters?");
+    var pwCharType = window.prompt("We recommend you use a special character in your password.\nAccepted special characters include:\n!\n@\n#\n$\n%\n&\nPlease type which special character(s) to include:")
     
 
 
