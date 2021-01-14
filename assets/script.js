@@ -1,18 +1,12 @@
-//Link to btn in HTML
 var generateBtn = document.querySelector("#generate");
-
-//Event listener to generate button
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Display final output in HTML-NEEDS ATTENTION
-var passwordText = document.querySelector("#password");
-
-//Main Function called when generate btn clicked
-function writePassword() {
-
+//Function to collect user's input, concatinate options, generate random list, and apply length
+function generatePassword() {
     //Prompts to obtain user input
     alert("Lets start creating your password! Please answer the following questions.");
-
+    
     //Length prompt plus validation loop
     var length = Number(prompt("How many characters would you like your password to be?\nMinimum 8\nMaximum 128"));
     while (isNaN(length) || length < 8 || length > 128) length = 
@@ -23,7 +17,7 @@ function writePassword() {
     var lowers = confirm("Would you like to use lowercase letters?");
     var numbers = confirm("Would you like to use numbers?");
     var symbols = confirm("Would you like to use special characters?");
-
+    
     //Loop through prompts again if no characters selected
     while (!uppers && !lowers && !numbers && !symbols) {
         alert("You must select at least one character type!");
@@ -32,27 +26,47 @@ function writePassword() {
         numbers = confirm("Would you like to use numbers?");
         symbols = confirm("Would you like to use special characters?");
     }
-
-    //Function to create random variables for true prompts
-    function generatePassword() {
-        var password = "";
-        passwordText.value = password;
-        var allowed = {};
-        if (uppers) password += rando(allowed.uppers = "QWERTYUIOPASDFGHJKLZXCVBNM");
-        if (lowers) password += rando(allowed.lowers = "qwertyuiopasdfghjklzxcvbnm");
-        if (numbers) password += rando(allowed.numbers = "1234567890");
-        if (symbols) password += rando(allowed.symbols = "!@#$%^&*(){}[]=<>/,.");
-        
-        //loop through allowed values until length met
-        for (var i = password.length; i < length; i++) password += rando(rando(allowed).value);
-
-        //This is where it gets messy! This seems redundant to queryselector in head
-        document.getElementById("password").value = randoSequence(password).join("");
-        
-        console.log(password); //display random password
-        console.log(passwordText);//display cooresponding HTML section
-        console.log(passwordText.value);//displays different random password that shows in HTML
+    
+    //Variables to store password in progress
+    var password = "";
+    var characterString = "";
+    
+    //Determine user choices and add character options to single string
+    //for upper
+    if (uppers) {
+        var uppersOp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        characterString = characterString.concat(uppersOp);
     }
-    //Call to run function
-    generatePassword()
+    //for lower
+    if (lowers) {
+        var lowersOp = "abcdefghijklmnopqrstuvwxyz";
+        characterString = characterString.concat(lowersOp);
+    }
+    //for number
+    if (numbers) {
+        var numbersOp = "01223456789";
+        characterString = characterString.concat(numbersOp);
+    }
+    //for symbol
+    if (symbols) {
+        var symbolsOp = "!@#$%^&*()=+";
+        characterString = characterString.concat(symbolsOp);
+    }
+
+    //Creates random list and loops through until length met
+    for (var i = 0; i < length; i++) {
+        var randomList = Math.floor(Math.random() * characterString.length);
+        var char = characterString.charAt(randomList);
+        password = password.concat(char);
+        console.log(password);
+    }
+    return password;
+}
+
+// Write password to the #password input
+function writePassword() { 
+    password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+    return;
 }
