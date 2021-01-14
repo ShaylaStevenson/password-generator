@@ -70,3 +70,10 @@ function writePassword() {
     passwordText.value = password;
     return;
 }
+
+//Style: Green button and gray card background
+generateBtn.setAttribute("style", "background-color:green;");
+var h2El = document.querySelector("h2");
+h2El.setAttribute("style", "text-align:center;");
+var cardEl = document.querySelector(".card");
+cardEl.setAttribute("style", "background-color:lightgray;");
