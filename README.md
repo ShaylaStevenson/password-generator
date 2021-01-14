@@ -16,5 +16,6 @@ This is an application designed to generate a random password based on the user'
 * "Password Generator with Javascript" @ https://dev.to/olawanle_joel/password-generator-with-javascript-57c
 
 ### Links to access application:
-* 
+* Github repository: https://github.com/ShaylaStevenson/password-generator
+* Live URL: https://shaylastevenson.github.io/password-generator/
 
