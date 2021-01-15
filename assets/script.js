@@ -8,9 +8,9 @@ function generatePassword() {
     alert("Lets start creating your password! Please answer the following questions.");
     
     //Length prompt plus validation loop
-    var length = Number(prompt("How many characters would you like your password to be?\nMinimum 8\nMaximum 128"));
+    var length = prompt("How many characters would you like your password to be?\nMinimum 8\nMaximum 128");
     while (isNaN(length) || length < 8 || length > 128) length = 
-        Number(prompt("Sorry, that is not a valid choice.\nMinimum characters: 8\nMaximum characters: 128\nHow many characters would you like your password to be?"));
+        prompt("Sorry, that is not a valid choice.\nMinimum characters: 8\nMaximum characters: 128\nHow many characters would you like your password to be?");
     
     //Continue when length condition satisfied
     var uppers = confirm("Would you like to use uppercase letters?");
